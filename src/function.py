@@ -28,6 +28,7 @@ def abssubmatrix(m1, m2):
     return result
 
 def multimatrix(m1, m2):
+    """Multiply two matrices of the same size"""
     result = np.dot(m1, m2)
     return result
 
