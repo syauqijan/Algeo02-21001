@@ -1,3 +1,5 @@
+# me-return set matriks hasil selisih dari mean set tersebut
+
 from function import abssubmatrix
 from meanSetImg import meanSetImg
 

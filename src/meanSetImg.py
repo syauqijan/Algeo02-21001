@@ -1,3 +1,5 @@
+# me-return mean dari suatu set matriks
+
 from function import addmatrix, mulmatrixnum
 
 def meanSetImg(setImg) :
