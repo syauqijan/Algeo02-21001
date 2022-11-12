@@ -18,6 +18,15 @@ def submatrix(m1, m2):
             result[i].append(m1[i][j] - m2[i][j])
     return result
 
+def abssubmatrix(m1, m2):
+    """Subtract two matrices of the same size with absolute"""
+    result = []
+    for i in range(len(m1)):
+        result.append([])
+        for j in range(len(m1[i])):
+            result[i].append(abs(m1[i][j] - m2[i][j]))
+    return result
+
 def mulmatrix(m1, m2):
     """Multiply two matrices of the same size"""
     result = []
@@ -43,15 +52,6 @@ def mulmatrixnum(m1, num):
         result.append([])
         for j in range(len(m1[i])):
             result[i].append(m1[i][j] * num)
-    return result
-
-def divmatrixnum(m1, num):
-    """Divide a matrix with a number"""
-    result = []
-    for i in range(len(m1)):
-        result.append([])
-        for j in range(len(m1[i])):
-            result[i].append(m1[i][j] / num)
     return result
 
 def determinantmatrix(m1):
