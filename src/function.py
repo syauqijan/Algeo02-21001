@@ -65,12 +65,3 @@ def transposematrix(m1):
 def inversematrix(m1):
     result = np.linalg.inv(m1)
     return result
-
-def meanmatrix(m1,m2):
-    """Mean of two matrices of the same size"""
-    result = []
-    for i in range(len(m1)):
-        result.append([])
-        for j in range(len(m1[i])):
-            result[i].append((m1[i][j] + m2[i][j])/2)
-    return result
