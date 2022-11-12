@@ -27,13 +27,8 @@ def abssubmatrix(m1, m2):
             result[i].append(abs(m1[i][j] - m2[i][j]))
     return result
 
-def mulmatrix(m1, m2):
-    """Multiply two matrices of the same size"""
-    result = []
-    for i in range(len(m1)):
-        result.append([])
-        for j in range(len(m1[i])):
-            result[i].append(m1[i][j] * m2[i][j])
+def multimatrix(m1, m2):
+    result = np.dot(m1, m2)
     return result
 
 def divmatrix(m1, m2):
@@ -65,3 +60,11 @@ def transposematrix(m1):
 def inversematrix(m1):
     result = np.linalg.inv(m1)
     return result
+
+def kovarian(m1):
+    result = multimatrix(m1, transposematrix(m1))
+    return result
+
+def printmatrix(m1):
+    for i in range(len(m1)):
+        print(m1[i])
