@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 import os
-from function import *
+# from function import *
 
 
 def load_images_from_folder(folder):
@@ -26,7 +26,7 @@ def resize_image(folder):
 
 path = 'test/dataset/pins_Zendaya'
 matrix_img = resize_image(path)
-printmatrix(matrix_img)
+print(matrix_img)
 
 
 
