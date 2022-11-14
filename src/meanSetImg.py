@@ -1,10 +1,9 @@
 # me-return mean dari suatu set matriks
-
-from function import addmatrix, mulmatrixnum
+import numpy as np
 
 def meanSetImg(setImg) :
-    sumImg = [[0]*len(setImg[0])]*len(setImg[0])
+    sumImg = [[0 for i in range(256)] for j in range(256)]
     for i in range(len(setImg)) :
-        sumImg = addmatrix(sumImg,setImg[i])
+        sumImg = np.add(sumImg,setImg[i])
 
-    return mulmatrixnum(sumImg, float(1/len(setImg)))
+    return np.multiply(sumImg, float(1/len(setImg)))

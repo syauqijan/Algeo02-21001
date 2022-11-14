@@ -1,11 +1,11 @@
 # me-return set matriks hasil selisih dari mean set tersebut
 
-from function import abssubmatrix
+import numpy as np
 from meanSetImg import meanSetImg
 
 def setDiffImg(setImg) :
     mean = meanSetImg(setImg)
     setDiff = setImg
     for i in range(len(setImg)) :
-        setDiff[i] = abssubmatrix(setDiff[i],mean)
+        setDiff[i] = np.absolute(np.subtract(setDiff[i],mean))
     return setDiff
