@@ -3,7 +3,7 @@ import numpy as np
 addmatrix = np.add(a,b)
 submatrix = np.subtract(a,b)
 abssubmatrix = np.absolute(np.subtract(a,b))
-multiplymatrix = np.dot(a,b)
+multiplymatrix = np.matmul(a,b)
 divmatrix = np.divide(a,b)
 multiplymatrixwithnum = np.multiply(a,const)
 determinantmatrix = np.linalg.det(a)

@@ -3,9 +3,16 @@
 import numpy as np
 from meanSetImg import meanSetImg
 
-def setDiffImg(setImg) :
-    mean = meanSetImg(setImg)
-    setDiff = setImg
+# def setDiffImg(setImg, mean) :
+#     setDiff = []
+#     print(len(setImg))
+#     for i in range(len(setImg)) :
+#         setDiff[i] = np.absolute(np.subtract(setDiff[i],mean))
+#     return setDiff
+
+def setDiffImg(setImg, mean) :
+    setDiff = []
+  
     for i in range(len(setImg)) :
-        setDiff[i] = np.absolute(np.subtract(setDiff[i],mean))
+        setDiff.append(np.absolute(np.subtract(setImg[i],mean)))
     return setDiff
