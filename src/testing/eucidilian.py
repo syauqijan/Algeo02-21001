@@ -11,7 +11,7 @@ def weighttest(resultarr,testimg):
     return wtest
 
 
-def weightdata(differenceimg,resultarr):
+def weightdata(resultarr,differenceimg):
     w = []
     for i  in range(len(differenceimg)):
         temp = [[0 for i in range(256)] for j in range(256)] 
@@ -40,7 +40,7 @@ def distance(wtest, w):
     min = euclidean_distance(wtest,w[0])
     for i in range(1, len(w)):
         distance = euclidean_distance(wtest,w[i])
-        print(distance)
+        # print(distance)
         if distance < min :
             min = distance
             h = i

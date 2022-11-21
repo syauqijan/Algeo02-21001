@@ -39,9 +39,10 @@ def find_eig_qr(A):
 
     return np.diag(X), pQ
 
-def eigface(data,eigvect,differenceimg):
-    leneigen = len(data) * 0.06
+def eigface(eigvect,differenceimg):
+    leneigen = round(len(differenceimg) * 0.06)
     resultarr = []
+    k = 0
     for i in range(leneigen) :
         eigenfaces = np.matmul(eigvect,differenceimg)[i]
         result = [[0 for i in range(256)] for j in range(256)]
@@ -51,3 +52,4 @@ def eigface(data,eigvect,differenceimg):
                 k += 1
         k = 0
         resultarr.append(result)
+    return resultarr
