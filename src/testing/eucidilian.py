@@ -35,7 +35,7 @@ def euclidean_distance(x, y):
     return np.sqrt(sum)
    
 
-def main(wtest, w):
+def distance(wtest, w):
     h = 0
     min = euclidean_distance(wtest,w[0])
     for i in range(1, len(w)):
