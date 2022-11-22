@@ -25,32 +25,76 @@ def resize_image(folder):
 #resize jadiin 256^2 1
 def imagevector(folder) :
     vector_images = []
-    for image in resize_image(folder) :
-        vector_images.append(np.array(image).flatten())
+    for i in folder :
+        vector_images.append(np.array(folder[i]).flatten())
     return vector_images
 
 #rata2
 def meanSetImg(setImg) :                                       
-    sumImg = [0 for i in range(256*256)]
+    sumImg = [[0 for i in range(256)] for j in range (256)]
     length = len(setImg)
     for i in range(length) :
-        for j in range(256*256) :
-            sumImg[j] += setImg[i][j]
+        for j in range(256) :
+            for k in range (256) :
+                sumImg[j][k] += setImg[i][j][k]/length
     
-    return np.divide(sumImg, length)
+    return sumImg
+
+def meanVect(setImg) :
+    mean = [0 for i in range (256*256)]
+    length = len(setImg)
+    for i in range(length) :
+        for j in range (256*256) :
+            mean[j] += setImg[i][j]/length
+    return mean
 
 
 #tiap foto dikurangin rata2
-def setDiffImg(setImg, mean) :
-    setDiff = []
-  
+# def setDiffImg(setImg, mean) :
+#     setDiff = []
+#     temp = [0 for i in range (256*256)]
+#     for i in range(len(setImg)) :
+#         for j in range (256*256):
+#             temp = setImg[i][j] - mean[j]
+#         setDiff.append (temp)
+#     return setDiff
+
+def normilazi(setImg):
+    mean = meanSetImg(setImg)
+    norm = [[0 for i in range(256)] for j in range(256)]
+    for i in range (len(setImg)):
+        for j in range (256):
+            for k in range (256):
+                norm[i][j][k] = setImg[i][j][k] - mean[j][k]
+    return norm
+
+def normalvect(setImg) :
+    mean = meanVect(setImg)
+    setDiff = [[0 for j in range (256*256)] for i in range (len(setImg))]
+    z = 0
     for i in range(len(setImg)) :
-        setDiff.append(np.absolute(np.subtract(setImg[i],mean)))
+        for j in range(256*256) :
+            setDiff[i][j] = setImg[i][j] - mean[j]
+
     return setDiff
 
+def normimg(img, mean) :
+    result = [0 for i in range(256*256)]
+    k = 0
+    for i in range(256) :
+        for j in range(256) :
+            result[k] = img[i][j] - mean[i][j]
+            k += 1
+    return result
+                
+
 def covarian(setImg):
-    covarian = np.matmul(setImg,np.transpose(setImg))
-    return covarian
+    norm = normalvect(setImg)
+    length = len(setImg)
+    cov = [[0 for i in range(length)] for j in range(length)]
+    cov = np.matmul(norm, np.transpose(norm))
+    return cov
+
 
 def reshapeimg(img) :
     result = [[0 for i in range(256)] for j in range(256)]

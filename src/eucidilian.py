@@ -4,10 +4,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 
-def weighttest(resultarr,testimg):
+def weighttest(resultarr,testimg, mean):
+    mean = reshapeimg(mean)
+    for i in range(256):
+        for j in range(256):
+            testimg[i][j] -= mean[i][j]
     wtest = [[0 for i in range(256)] for j in range(256)]
-    for i in range (len(resultarr)):
-        wtest = np.add(wtest,(np.matmul(testimg,resultarr[i])))
+    for k in range(len(resultarr)):
+        wtest = np.add(wtest,(np.matmul(testimg,resultarr[k])))
     return wtest
 
 
@@ -40,7 +44,7 @@ def distance(wtest, w):
     min = euclidean_distance(wtest,w[0])
     for i in range(1, len(w)):
         distance = euclidean_distance(wtest,w[i])
-        # print(distance)
+        print(distance)
         if distance < min :
             min = distance
             h = i
