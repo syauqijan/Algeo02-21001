@@ -38,24 +38,24 @@ def euclidean_distance(x, y):
     sum_sq = np.dot(np.transpose(temp), temp)
     return(np.sqrt(sum_sq))
 
-# m = 4
-# n = 4
+m = 4
+n = 4
 
-# A = np.random.rand(m, n)
-# # B = find_eig_qr(A)
-# # print(B)
+A = np.random.rand(m, n)
+# B = find_eig_qr(A)
+# print(B)
 
-# q, r = np.linalg.qr(A)
-# Q, R = qr(A)
+q, r = np.linalg.qr(A)
+Q, R = qr(A)
 
-# with np.printoptions(linewidth=9999, precision=20, suppress=True):
-#     print("**** Q from qr_decomposition")
-#     print(Q)
-#     print("**** Q from np.linalg.qr")
-#     print(q)
-#     print()
+with np.printoptions(linewidth=9999, precision=20, suppress=True):
+    print("**** Q from qr_decomposition")
+    print(Q)
+    print("**** Q from np.linalg.qr")
+    print(q)
+    print()
     
-#     print("**** R from qr_decomposition")
-#     print(R)
-#     print("**** R from np.linalg.qr")
-#     print(r)
+    print("**** R from qr_decomposition")
+    print(R)
+    print("**** R from np.linalg.qr")
+    print(r)

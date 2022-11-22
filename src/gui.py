@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 from PIL import ImageTk, Image
+from main import *
 
 window = Tk() 
 window.title("Face Recognition")    
@@ -61,6 +62,7 @@ button1 = Button(window, text="Choose Folder", command=open_folder , font=("Aria
 button1.place(x=23, y=220)
 button2 = Button(window, text="Choose File", command=open_file, font=("Arial Bold", 14), fg="#909fc7", bg="white", activebackground="white", activeforeground="white", bd=0)
 button2.place(x=36, y=308)
-
+button3 = Button(window, text="CHECK",command=face_recog(), font=("Arial Bold", 14), fg="#909fc7", bg="white", activebackground="white", activeforeground="white", bd=0)
+button3.place(x=36, y=308)
 window.mainloop()
 
