@@ -47,7 +47,7 @@ def main():
 
     w = weightdata(eigfacearr,normdata)
 
-    x = distance(wtest,w)
+    x, similarity = distance(wtest,w)
 
     # showimg(colorimg,x)
     print(image_name[x])

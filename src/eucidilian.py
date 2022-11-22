@@ -39,7 +39,9 @@ def distance(wtest, w):
             min = distance
             h = i
     print(min)
-    return h
+    wtest = np.square(wtest)
+    similarity = (np.sum(wtest) - min)/(np.sum(wtest))
+    return h, similarity
 
 def showimg(images,h):
     # plt.imshow(images[h], cmap = 'RGB')
