@@ -2,22 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 from step1 import *
 
-def qr(A):
-    m, n = A.shape
-    Q = np.eye(m)
-    for i in range(n - (m == n)):
-        H = np.eye(m)
-        H[i:, i:] = householder(A[i:, i])
-        Q = Q@H
-        A = H@A
-    return Q, A
+def qr(M):
+    row, col = M.shape
+    Q = np.eye(row)
+    for i in range(col - (row == col)):
+        house_holder = np.eye(row)
+        house_holder[i:, i:] = householder(M[i:, i])
+        Q = np.dot(Q, house_holder)
+        M = np.dot(house_holder, M)
+    return Q, M
  
 def householder(a):
     u = a / (a[0] + np.copysign(euclideanDistance(a,0), a[0]))
     u[0] = 1
-    H = np.eye(a.shape[0])
-    H -= (2 / np.dot(u, u)) * u[:, None] @ u[None, :]
-    return H
+    house_holder = np.eye(a.shape[0])
+    house_holder -= (2 / np.dot(u, u)) * u[:, None] @ u[None, :]
+    return house_holder
 
 def euclideanDistance(x, y): 
     temp = np.subtract(x, y)
@@ -25,13 +25,13 @@ def euclideanDistance(x, y):
     return(np.sqrt(sum_sq))
 
 
-def qreigen(A):
-    pQ = np.eye(A.shape[0])
-    X=A.copy()
+def qreigen(M):
+    pQ = np.eye(M.shape[0])
+    X=M.copy()
     for i in range(10):
             Q,R = qr(X)
-            pQ = pQ @ Q
-            X = R @ Q
+            pQ = np.dot(pQ,Q)
+            X = np.dot(R,Q)
 
     return np.diag(X), pQ
 

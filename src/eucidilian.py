@@ -23,7 +23,7 @@ def euclidean_distance(wtest, wdata):
     wdata = np.subtract(wtest,wdata)
     wdata = np.square(wdata)
     dis = np.sum(wdata)
-    # dis = np.sqrt(range)
+
     return dis
 
     
@@ -34,13 +34,11 @@ def distance(wtest, w):
     min = euclidean_distance(wtest,w[0])
     for i in range(1, len(w)):
         distance = euclidean_distance(wtest,w[i])
-        print(distance)
         if distance < min :
             min = distance
             h = i
-    print(min)
     wtest = np.square(wtest)
-    similarity = (np.sum(wtest) - min)/(np.sum(wtest))
+    similarity = (np.sum(wtest) - min)/(np.sum(wtest))*100
     return h, similarity
 
 def showimg(images,h):

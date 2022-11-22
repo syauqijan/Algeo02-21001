@@ -50,7 +50,6 @@ def main():
     x, similarity = distance(wtest,w)
 
     # showimg(colorimg,x)
-    print(image_name[x])
     closest_path = os.path.join(data, image_name[x])
     closest_img = Image.open(closest_path)
     closest_img = closest_img.resize((240, 240))
@@ -61,8 +60,11 @@ def main():
     end_time = time.time()
     ex_time1 = get_elapsed_time()
     ex_time = str(round(ex_time1, ndigits=2)) + " detik"
-    ex_time_label = Label(window, text= ex_time , font=("Arial Bold", 13), fg="#909fc7", bg="white", bd=0)
-    ex_time_label.place(x=532, y=515)
+    ex_time_label = Label(window, text= ex_time , font=("Arial Bold", 14), fg="#909fc7", bg="white", bd=0)
+    ex_time_label.place(x=524, y=513)
+    sim = str(round(similarity, ndigits=2)) + "%"
+    sim_label = Label(window, text= sim , font=("Arial Bold", 14), fg="#909fc7", bg="white", bd=0)
+    sim_label.place(x=800, y=512)
 
 def get_elapsed_time():
     return end_time - start_time
@@ -127,6 +129,5 @@ button2 = Button(window, text="Choose File", command=open_file, font=("Arial Bol
 button2.place(x=36, y=308)
 button3 = Button(window, text="CHECK",command=main, font=("Arial Bold", 14), fg="white", bg="#d7ccd9", activebackground="#d7ccd9", activeforeground="white", bd=0)
 button3.place(x=53, y=398)
-
 
 window.mainloop()
