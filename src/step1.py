@@ -9,24 +9,31 @@ data = r'D:\Kelvin\code\python\Algeo02-21001\test\dataset'
 def load_images_from_folder(folder):
     images = []
     for filename in os.listdir(folder):
-        img = cv2.imread(os.path.join(folder,filename),0)
+        img = cv2.imread(os.path.join(folder,filename))
         if img is not None:
             images.append(img)
     return images
 
+def load_images_from_foldergray(folder):
+    images = []
+    for filename in os.listdir(folder):
+        img = cv2.imread(os.path.join(folder,filename),0)
+        if img is not None:
+            images.append(img)
+    return images
 #resize 256 256
 def resize_image(folder):
     resized_images = []
-    for image in load_images_from_folder(folder):
-        resized = cv2.resize(image, (256, 256),interpolation= cv2.INTER_AREA)
+    for i in range (len(folder)):
+        resized = cv2.resize(folder[i], (256, 256),interpolation= cv2.INTER_AREA)
         resized_images.append(resized)
     return resized_images
 
 #resize jadiin 256^2 1
-def imagevector(folder) :
+def imagevector(images):
     vector_images = []
-    for i in folder :
-        vector_images.append(np.array(folder[i]).flatten())
+    for i in range (len(images)) :
+        vector_images.append(np.array(images[i]).flatten())
     return vector_images
 
 #rata2
@@ -60,13 +67,14 @@ def meanVect(setImg) :
 #     return setDiff
 
 def normilazi(setImg):
+    normal= []
     mean = meanSetImg(setImg)
-    norm = [[0 for i in range(256)] for j in range(256)]
+    norm = [[0 for j in range(256)] for k in range(256)]
     for i in range (len(setImg)):
-        for j in range (256):
-            for k in range (256):
-                norm[i][j][k] = setImg[i][j][k] - mean[j][k]
-    return norm
+        norm[i] = np.subtract(setImg[i], mean)
+        normal.append(norm[i])
+    return normal
+            
 
 def normalvect(setImg) :
     mean = meanVect(setImg)
@@ -79,12 +87,10 @@ def normalvect(setImg) :
     return setDiff
 
 def normimg(img, mean) :
-    result = [0 for i in range(256*256)]
-    k = 0
+    result = [[0 for i in range(256)] for j in range(256)]
     for i in range(256) :
         for j in range(256) :
-            result[k] = img[i][j] - mean[i][j]
-            k += 1
+            result[i][j] = img[i][j] - mean[i][j]
     return result
                 
 
@@ -104,3 +110,10 @@ def reshapeimg(img) :
             result[i][j] = img[k]
             k += 1
     return result
+
+def summatrix(matrix) :
+    sum = [[0 for i in range(256)] for j in range(256)]
+    for i in range (len(matrix)) :
+        sum = np.add(sum, matrix[i])
+        
+    return sum
